@@ -1,0 +1,11 @@
+ 
+node_modules
+**/*.*rc
+**/*.config*
+junit.xml
+**/types
+built
+dist
+coverage
+.github
+.vscode

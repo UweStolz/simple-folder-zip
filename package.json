@@ -1,0 +1,40 @@
+{
+  "name": "simple-folder-zip",
+  "version": "0.0.1",
+  "main": "./built/index.js",
+  "files": [
+    "built"
+  ],
+  "bin": {
+    "simpleFolderZip": "./built/bin/simpleFolderZip.js"
+  },
+  "author": "UweStolz",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "build": "yarn run rimraf ./built && yarn run tsc -p ./tsconfig.build.json",
+    "watch": "yarn run tsc -w -p ./tsconfig.build.json",
+    "lint": "yarn run eslint --ext .ts ."
+  },
+  "dependencies": {
+    "@oclif/command": "^1.6.0",
+    "@oclif/config": "^1.15.1",
+    "@oclif/errors": "^1.2.2",
+    "@oclif/plugin-help": "^3.0.0",
+    "archiver": "^4.0.1",
+    "fs-extra": "^9.0.0",
+    "tslib": "^1.11.1"
+  },
+  "devDependencies": {
+    "@types/archiver": "^3.1.0",
+    "@types/fs-extra": "^8.1.0",
+    "@types/node": "^13.13.4",
+    "@typescript-eslint/eslint-plugin": "^2.30.0",
+    "@typescript-eslint/parser": "^2.30.0",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.1.0",
+    "eslint-plugin-import": "^2.20.2",
+    "ts-node": "^8.10.1",
+    "typescript": "^3.8.3"
+  }
+}
