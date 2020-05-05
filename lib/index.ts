@@ -1,14 +1,16 @@
 /* eslint-disable consistent-return */
 import { access, createWriteStream, constants } from 'fs-extra';
 import archiver, { ArchiverOptions } from 'archiver';
-import { dirname } from 'path';
+import { dirname, sep } from 'path';
+
+let archiveSize: number;
 
 function zipFolder(
   src: string,
   dest: string,
   callback: { (err?: NodeJS.ErrnoException): void },
   options?: ArchiverOptions,
-): void {
+): any {
   access(src, constants.F_OK, (error: NodeJS.ErrnoException) => {
     if (error) {
       return callback(error);
@@ -23,6 +25,7 @@ function zipFolder(
       const zipArchive = archiver('zip', options);
 
       output.on('close', () => {
+        archiveSize = zipArchive.pointer();
         callback();
       });
 
@@ -35,17 +38,17 @@ function zipFolder(
 
 export default async function simpleFolderZip(
   sourceFolder: string,
-  destinationFolder: string,
+  destinationPath?: string,
   options?: ArchiverOptions,
-): Promise<void> {
-  dirname(destinationFolder);
+): Promise<number> {
+  const destination = destinationPath || `${sourceFolder.split(sep).pop()}.zip`;
 
   return new Promise((resolve, reject) => {
-    zipFolder(sourceFolder, `${destinationFolder}.zip`, (err: any) => {
+    zipFolder(sourceFolder, destination, (err: any) => {
       if (err) {
         reject(err);
       }
-      resolve();
+      resolve(archiveSize);
     }, options);
   });
 }
