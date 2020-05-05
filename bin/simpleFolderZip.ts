@@ -20,6 +20,12 @@ export default class SimpleFolderZip extends Command {
 
     static description = 'ZIP a folder and its contents recursively'
 
+    static examples = [
+      '$ simpleFolderZip <source> [destination]',
+      '$ simpleFolderZip ./example/folder',
+      '$ simpleFolderZip ./example/folder ~/example.zip',
+    ]
+
     async run(): Promise<void> {
       const parsed = this.parse(SimpleFolderZip);
       await simpleFolderZip(parsed.args.source, parsed.args.destination);
