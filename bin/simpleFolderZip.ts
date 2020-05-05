@@ -1,6 +1,8 @@
 #!/usr/bin/env node
 
 import { Command } from '@oclif/command';
+import ora from 'ora';
+import filesize from 'filesize';
 import simpleFolderZip from '../lib';
 
 export default class SimpleFolderZip extends Command {
@@ -28,7 +30,16 @@ export default class SimpleFolderZip extends Command {
 
     async run(): Promise<void> {
       const parsed = this.parse(SimpleFolderZip);
-      await simpleFolderZip(parsed.args.source, parsed.args.destination);
+      const spinner = ora('Generating ZIP...');
+      try {
+        spinner.start();
+        const size = await simpleFolderZip(parsed.args.source, parsed.args.destination);
+        const humanReadableSize = filesize(size);
+        spinner.succeed(`ZIP successfully generated
+  Size: ${humanReadableSize}`);
+      } catch (err) {
+        spinner.fail('There was an error while generating the ZIP!');
+      }
     }
 }
 
