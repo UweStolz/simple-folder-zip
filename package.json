@@ -1,6 +1,6 @@
 {
   "name": "simple-folder-zip",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "main": "./built/index.js",
   "files": [
     "built"
