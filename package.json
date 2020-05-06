@@ -10,7 +10,7 @@
   },
   "author": "UweStolz",
   "license": "MIT",
-  "private": true,
+  "private": false,
   "scripts": {
     "build": "yarn run rimraf ./built && yarn run tsc -p ./tsconfig.build.json",
     "watch": "yarn run tsc -w -p ./tsconfig.build.json",
