@@ -1,5 +1,5 @@
 import simpleFolderZip from './lib';
-import { SimpleFolderZip } from './types';
+import { Options } from './types';
 
 export default simpleFolderZip;
-export { SimpleFolderZip };
+export { Options };

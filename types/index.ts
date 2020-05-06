@@ -1,2 +1,2 @@
-export namespace SimpleFolderZip {
-}
+import { ArchiverOptions } from 'archiver';
+export type Options = ArchiverOptions;
