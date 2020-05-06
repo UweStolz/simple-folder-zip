@@ -16,7 +16,6 @@ export default class SimpleFolderZip extends Command {
         name: 'destination',
         description: 'The path where you want to save the ZIP file to',
         required: false,
-        default: process.cwd(),
       },
     ]
 
