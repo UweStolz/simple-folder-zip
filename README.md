@@ -36,7 +36,8 @@ import simpleFolderZip from 'simple-folder-zip';
 const source = '~/myAwesomeFolder';
 const destination = './some/folder/example.zip';
   try {
-    // If you do not pass a destination path, the Zip will be placed in the current folder with the source folder as name
+    // If you do not pass a destination path,
+    // the Zip will be placed in the current folder with the source folder as name
     const filesize = await simpleFolderZip(source, destination);
     console.log(`Total bytes: ${filesize}`)
   } catch (err) {
