@@ -3,6 +3,12 @@
   "version": "1.0.1",
   "main": "./built/index.js",
   "description": "Simply zip a folder and all of its contents.",
+  "keywords": [
+    "zip",
+    "simple",
+    "recursive",
+    "folder"
+  ],
   "files": [
     "built"
   ],
