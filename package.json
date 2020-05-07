@@ -1,6 +1,6 @@
 {
   "name": "simple-folder-zip",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "main": "./built/index.js",
   "description": "Simply zip a folder and all of its contents.",
   "keywords": [
