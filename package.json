@@ -1,8 +1,14 @@
 {
   "name": "simple-folder-zip",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "main": "./built/index.js",
   "description": "Simply zip a folder and all of its contents.",
+  "keywords": [
+    "zip",
+    "simple",
+    "recursive",
+    "folder"
+  ],
   "files": [
     "built"
   ],
@@ -25,13 +31,15 @@
     "archiver": "^4.0.1",
     "filesize": "^6.1.0",
     "fs-extra": "^9.0.0",
+    "node-notifier": "^7.0.0",
     "ora": "^4.0.4",
-    "tslib": "^1.11.1"
+    "tslib": "^1.11.2"
   },
   "devDependencies": {
     "@types/archiver": "^3.1.0",
     "@types/fs-extra": "^8.1.0",
     "@types/node": "^13.13.4",
+    "@types/node-notifier": "^6.0.1",
     "@typescript-eslint/eslint-plugin": "^2.30.0",
     "@typescript-eslint/parser": "^2.30.0",
     "eslint": "^6.8.0",

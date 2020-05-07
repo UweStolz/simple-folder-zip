@@ -1,8 +1,9 @@
 #!/usr/bin/env node
 
-import { Command } from '@oclif/command';
+import { Command, flags } from '@oclif/command';
 import ora from 'ora';
 import filesize from 'filesize';
+import nodeNotifier from 'node-notifier';
 import simpleFolderZip from '../lib';
 
 export default class SimpleFolderZip extends Command {
@@ -19,6 +20,14 @@ export default class SimpleFolderZip extends Command {
       },
     ]
 
+    static flags = {
+      notify: flags.boolean({
+        description: 'Send a notification if the Zip process is finished',
+        char: 'n',
+        required: false,
+      }),
+    }
+
     static description = 'ZIP a folder and its contents recursively'
 
     static examples = [
@@ -34,10 +43,24 @@ export default class SimpleFolderZip extends Command {
         spinner.start();
         const size = await simpleFolderZip(parsed.args.source, parsed.args.destination);
         const humanReadableSize = filesize(size);
-        spinner.succeed(`ZIP successfully generated
-  Size: ${humanReadableSize}`);
+        const successMessage = `ZIP successfully generated
+ Size: ${humanReadableSize}`;
+        spinner.succeed(successMessage);
+        if (parsed.flags.notify) {
+          nodeNotifier.notify({
+            title: 'Simple-Folder-Zip',
+            message: `${successMessage}`,
+          });
+        }
       } catch (err) {
-        spinner.fail('There was an error while generating the ZIP!');
+        const failMessage = 'There was an error while generating the ZIP!';
+        spinner.fail(failMessage);
+        if (parsed.flags.notify) {
+          nodeNotifier.notify({
+            title: 'Simple-Folder-Zip',
+            message: failMessage,
+          });
+        }
       }
     }
 }

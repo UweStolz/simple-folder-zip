@@ -4,8 +4,8 @@ on:
     - master
 
 jobs:
-  publish:
-    name: publish
+  npmPublish:
+    name: publish to NPM
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
@@ -19,10 +19,3 @@ jobs:
     - run: npm publish --access public
       env:
         NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
-    - uses: actions/setup-node@v1
-      with:
-        registry-url: 'https://npm.pkg.github.com'
-        scope: '@UweStolz'
-    - run: npm publish
-      env:
-        NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
