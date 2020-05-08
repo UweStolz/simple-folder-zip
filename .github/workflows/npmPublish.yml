@@ -5,6 +5,7 @@ on:
 
 jobs:
   npmPublish:
+    if: "!contains(github.event.head_commit.message, 'skip ci')"
     name: publish to NPM
     runs-on: ubuntu-latest
     steps:

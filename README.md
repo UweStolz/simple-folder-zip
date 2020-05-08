@@ -28,6 +28,10 @@ EXAMPLES
   $ simpleFolderZip ./example/folder ~/example.zip
 ```
 
+### Option
+
+If you want to get a notification as soon as the zipping is finished pass `-n` or `--notify` to the CLI.
+
 ### Programmatic
 
 ```typescript
@@ -46,7 +50,6 @@ const destination = './some/folder/example.zip';
 ```
 
 Additionally you can pass [ArchiverOptions](https://www.archiverjs.com/archiver) to the function.
-
 
 ## License
 
